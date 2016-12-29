@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Iron Man: The Game</title>
+
+  <!-- Bootstrap File -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+  <!-- JQuery -->
+  <script src="https://code.jquery.com/jquery.js"></script>
+
+</head>
+<body>
+
+  <!-- Overall Bootstrap Grid -->
+  <div class="container">
+
+    <!-- Jumbotron with Title -->
+    <div class="jumbotron">
+      <h1 class="text-center"><strong>Iron Man: The Game!</strong></h1>
+      <h4 class="text-center">Rated M for Mature</h4>
+      <hr>
+      <div class="text-center">
+        <button class="btn btn-warning btn-xs themeButton"><span class="glyphicon glyphicon-music"></span> Play Theme!</button>       
+        <button class="btn btn-default btn-xs pauseButton"><span class="glyphicon glyphicon-pause"></span> Pause Song</button>  
+      </div>
+
+    </div>
+    <div class="row">
+
+      <!-- Left Panel -->
+      <div class="col-lg-6">
+
+        <!-- Controls (Superpower Grow/Shrink)-->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Superpowers - Change Sizes!</h3>
+          </div>
+          <div class="panel-body">
+            <div class="text-center">
+              <button class="btn btn-default btn-lg normalButton"><span class="glyphicon glyphicon-ok-sign"></span> Normal</button>
+              <button class="btn btn-primary btn-lg growButton"><span class="glyphicon glyphicon-plus-sign"></span> Grow</button>
+              <button class="btn btn-danger btn-lg shrinkButton"><span class="glyphicon glyphicon-minus-sign"></span> Shrink</button>
+              <button class="btn btn-warning btn-lg shieldButton"><span class="glyphicon glyphicon-off"></span> Shield
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Controls (Superpower Visibility) -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Superpowers - Invisiblity!</h3>
+          </div>
+          <div class="panel-body">
+            <div class="text-center">
+              <button class="btn btn-default btn-lg visButton"><span class="glyphicon glyphicon-eye-open"></span> Visible</button>
+              <button class="btn btn-info btn-lg invisButton"><span class="glyphicon glyphicon-eye-close"></span> Invisible</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Controls (Superpower Stretch) -->
+
+
+            <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Superpowers - Stretch</h3>
+          </div>
+          <div class="panel-body">
+            <div class="text-center">
+            <button class="btn btn-default btn-lg normalButton"><span class="glyphicon glyphicon-ok-sign"></span> Normal</button>
+              <button class="btn btn-info btn-lg thinButton"><span class="glyphicon glyphicon-resize-small"></span> Thin</button>
+              <button class="btn btn-default btn-lg thickButton"><span class="glyphicon glyphicon-resize-full"></span> Stretch</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Controls (Superpower Move Controls) -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Move Controls</h3>
+          </div>
+          <div class="panel-body">
+            <div class="text-center">
+              <button class="btn btn-default btn-lg upButton"><span class="glyphicon glyphicon-arrow-up"></span></button>       
+            </div>
+            <div class="text-center">
+              <button class="btn btn-default btn-lg leftButton"><span class="glyphicon glyphicon-arrow-left"></span></button>
+              <button class="btn btn-default btn-lg downButton"><span class="glyphicon glyphicon-arrow-down"></span></button>
+              <button class="btn btn-default btn-lg rightButton"><span class="glyphicon glyphicon-arrow-right"></span></button> 
+            </div>
+            <br>
+            <div class="text-center">
+              <button class="btn btn-default btn-lg backButton"><span class="glyphicon glyphicon-comment"></span> Go Iron Man!</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Panel (Captain Planet Hero)-->
+      <div class="col-lg-6">
+
+        <!-- Captain Planet Image -->
+        <img src="http://img.lum.dolimg.com/v1/images/3f1baa0812f35ac2910feeaf463a8d9c437a9b19.png?region=0%2C0%2C600%2C600" alt="" class="img ironman" style="position:absolute; top:50px; left: 80px; z-index: -20; height: 400px">
+      </div>
+    </div>
+  </div>
+  
+  <script>
+
+    // Javascript function that wraps everything
+    $(document).ready(function() {
+
+      // Gets Link for Theme Song
+      var audioElement = document.createElement("audio");
+      audioElement.setAttribute("src", "Assets/black_sabbath-iron_man.mp3");
+
+      // Theme Button
+      $(".themeButton").on("click", function() {
+        audioElement.play();
+      });
+
+      $(".pauseButton").on("click", function() {
+        audioElement.pause();
+      });
+
+      // Size Buttons
+      $(".normalButton").on("click", function() {
+        $(".ironman").animate({ width: "400px", height: "400px" });
+      });
+
+       $(".normalButton").on("click", function() {
+        $(".ironman").css( "border", "0px solid #f0ad4e" );
+      });
+
+      $(".growButton").on("click", function() { var height = $(".ironman").height();
+        height = height+50;
+        $(".ironman").animate({ height: height });
+      });
+
+      $(".shrinkButton").on("click", function() { var height = $(".ironman").height();
+        height = height-50;
+         $(".ironman").animate({ height: height });
+      });
+       $(".shieldButton").on("click", function() {
+        $(".ironman").css( "border", "3px solid #f0ad4e" );
+      });
+
+      // Visibility Buttons
+      $(".visButton").on("click", function() {
+        $(".ironman").animate({ opacity: "1" });
+      });
+
+      $(".invisButton").on("click", function() {
+        $(".ironman").animate({ opacity: "0.05" });
+      });
+
+      // Stretch Buttons
+      $(".thickButton").on("click", function() {
+        $(".ironman").animate({ width: "200%" });
+      });
+
+      $(".normal2Button").on("click", function() {
+        $(".ironman").animate({ width: "100%" });
+      });
+
+      $(".thinButton").on("click", function() {
+        $(".ironman").animate({ width: "20%" });
+      });
+
+      // Move Buttons
+      $(".upButton").on("click", function() {
+        $(".ironman").animate({ top: "-=200px" }, "normal");
+      });
+
+      $(".downButton").on("click", function() {
+        $(".ironman").animate({ top: "+=200px" }, "normal");
+      });
+
+      $(".leftButton").on("click", function() {
+        $(".ironman").animate({ left: "-=200px" }, "normal");
+      });
+
+      $(".rightButton").on("click", function() {
+        $(".ironman").animate({ left: "+=200px" }, "normal");
+      });
+
+      $(".backButton").on("click", function() {
+        $(".ironman").animate({ top: "50px", left: "80px" }, "fast");
+      });
+
+
+      // Move Buttons (Keyboard Down)
+      $(document).keyup(function(e) {
+        switch (e.which) {
+          case 40:
+            $(".ironman").animate({ top: "+=200px" }, "normal");
+        }
+      });
+
+      // Move Buttons (Keyboard Right)
+      $(document).keyup(function(e) {
+        switch (e.which) {
+          case 39:
+            $(".ironman").animate({ left: "+=200px" }, "normal");
+        }
+      });
+
+      // Move Buttons (Keyboard Up)
+      $(document).keyup(function(e) {
+        switch (e.which) {
+          case 38:
+            $(".ironman").animate({ top: "-=200px" }, "normal");
+        }
+      });
+
+      // Move Buttons (Keyboard Left)
+      $(document).keyup(function(e) {
+        switch (e.which) {
+          case 37:
+            $(".ironman").animate({ left: "-=200px" }, "normal");
+        }
+      });
+
+
+
+    });
+
+  </script>
+
+</body>
+</html>
